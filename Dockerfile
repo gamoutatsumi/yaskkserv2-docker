@@ -7,16 +7,16 @@ RUN cargo build --release
 RUN strip /home/rust/src/target/x86_64-unknown-linux-musl/release/yaskkserv2 \
 && strip /home/rust/src/target/x86_64-unknown-linux-musl/release/yaskkserv2_make_dictionary
 
-ADD --chown=rust:rust http://openlab.jp/skk/dic/SKK-JISYO.L.gz /tmp/
-ADD --chown=rust:rust http://openlab.jp/skk/dic/SKK-JISYO.jinmei.gz /tmp/
-ADD --chown=rust:rust http://openlab.jp/skk/dic/SKK-JISYO.fullname.gz /tmp/
-ADD --chown=rust:rust http://openlab.jp/skk/dic/zipcode.tar.gz /tmp/
-ADD --chown=rust:rust http://openlab.jp/skk/dic/SKK-JISYO.geo.gz /tmp/
-ADD --chown=rust:rust http://openlab.jp/skk/dic/SKK-JISYO.propernoun.gz /tmp/
-ADD --chown=rust:rust http://openlab.jp/skk/dic/SKK-JISYO.station.gz /tmp/
-ADD --chown=rust:rust http://openlab.jp/skk/dic/SKK-JISYO.law.gz /tmp/
-ADD --chown=rust:rust http://openlab.jp/skk/dic/SKK-JISYO.assoc.gz /tmp/
-ADD --chown=rust:rust http://openlab.jp/skk/dic/SKK-JISYO.edict.tar.gz /tmp/
+ADD --chown=rust:rust https://skk-dev.github.io/dict/SKK-JISYO.L.gz /tmp/
+ADD --chown=rust:rust https://skk-dev.github.io/dict/SKK-JISYO.jinmei.gz /tmp/
+ADD --chown=rust:rust https://skk-dev.github.io/dict/SKK-JISYO.fullname.gz /tmp/
+ADD --chown=rust:rust https://skk-dev.github.io/dict/zipcode.tar.gz /tmp/
+ADD --chown=rust:rust https://skk-dev.github.io/dict/SKK-JISYO.geo.gz /tmp/
+ADD --chown=rust:rust https://skk-dev.github.io/dict/SKK-JISYO.propernoun.gz /tmp/
+ADD --chown=rust:rust https://skk-dev.github.io/dict/SKK-JISYO.station.gz /tmp/
+ADD --chown=rust:rust https://skk-dev.github.io/dict/SKK-JISYO.law.gz /tmp/
+ADD --chown=rust:rust https://skk-dev.github.io/dict/SKK-JISYO.assoc.gz /tmp/
+ADD --chown=rust:rust https://skk-dev.github.io/dict/SKK-JISYO.edict.tar.gz /tmp/
 ADD --chown=rust:rust https://raw.githubusercontent.com/uasi/skk-emoji-jisyo/master/SKK-JISYO.emoji.utf8 /tmp/SKK-JISYO.emoji
 
 WORKDIR /tmp
