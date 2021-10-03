@@ -27,5 +27,9 @@
 
 - [SKK-JISYO.emoji.utf8](https://github.com/uasi/skk-emoji-jisyo)[^2]
 
+## ライセンス
+
+`Dockerfile` と `entrypoint.sh` には [MITライセンス](./LICENSE) が適用されます。
+
 [^1]: [ライセンス条項](./edict_doc.html)
 [^2]: 手元のクライアントの都合でeuc-jpモードにしているためそのままでは使えません。
