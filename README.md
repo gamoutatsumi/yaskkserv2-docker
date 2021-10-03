@@ -6,6 +6,13 @@
 
 個人的に使うためのイメージなので使用は自己責任でお願いします。
 
+## 起動
+
+```bash
+docker pull ghcr.io/gamoutatsumi/yaskkserv2:latest
+docker run -d --init --restart=unless-stopped -p 127.0.0.1:1178:1178 --name yaskkserv2 ghcr.io/gamoutatsumi/yaskkserv2:latest
+```
+
 ## 辞書
 
 入っている辞書は以下の通りです。
