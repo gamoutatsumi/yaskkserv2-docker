@@ -27,7 +27,7 @@ RUN sh -c "/home/rust/src/target/x86_64-unknown-linux-musl/release/yaskkserv2_ma
 
 FROM alpine:latest
 
-COPY --from=builder /home/rust/src/target/x86_64-unknown-linux-musl/release/yaskkserv2 /tmp/dictionary.yaskkserv2 /tmp/edict_doc.txt /
+COPY --from=builder /home/rust/src/target/x86_64-unknown-linux-musl/release/yaskkserv2 /tmp/dictionary.yaskkserv2 /tmp/edict_doc.html /
 
 COPY ./entrypoint.sh /
 
