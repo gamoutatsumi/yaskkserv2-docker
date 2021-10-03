@@ -1,4 +1,4 @@
-FROM ekidd/rust-musl-builder:latest AS builder
+FROM ekidd/rust-musl-builder:1.51.0 AS builder
 
 RUN git clone https://github.com/wachikun/yaskkserv2.git .
 
@@ -25,7 +25,7 @@ RUN sh -c "for tgz in *.tar.gz; do tar zxvf \$tgz ; done && rm *.tar.gz && gunzi
 
 RUN sh -c "/home/rust/src/target/x86_64-unknown-linux-musl/release/yaskkserv2_make_dictionary --dictionary-filename=dictionary.yaskkserv2 ./**/SKK-JISYO.*"
 
-FROM alpine:latest
+FROM alpine:3.13
 
 COPY --from=builder /home/rust/src/target/x86_64-unknown-linux-musl/release/yaskkserv2 /tmp/dictionary.yaskkserv2 /tmp/edict_doc.html /
 
