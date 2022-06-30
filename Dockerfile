@@ -1,4 +1,4 @@
-FROM ekidd/rust-musl-builder:1.51.0 AS builder
+FROM ekidd/rust-musl-builder@sha256:f9dcff1c3ec683e2ccdd3c9c1771d12590b7c4d64505bac89aa8e552a038aeaf AS builder
 
 RUN git clone https://github.com/wachikun/yaskkserv2.git .
 
