@@ -1,6 +1,6 @@
 FROM ekidd/rust-musl-builder@sha256:f9dcff1c3ec683e2ccdd3c9c1771d12590b7c4d64505bac89aa8e552a038aeaf AS builder
 
-RUN git clone https://github.com/wachikun/yaskkserv2.git .
+RUN git clone https://github.com/wachikun/yaskkserv2.git . -b 0.1.3 --depth 1
 
 RUN cargo build --release
 
