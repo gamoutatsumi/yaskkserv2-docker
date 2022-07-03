@@ -23,7 +23,7 @@ WORKDIR /tmp
 
 RUN sh -c "for tgz in *.tar.gz; do tar zxvf \$tgz ; done && rm *.tar.gz && gunzip *.gz"
 
-RUN sh -c "/home/rust/src/target/x86_64-unknown-linux-musl/release/yaskkserv2_make_dictionary --dictionary-filename=dictionary.yaskkserv2 ./**/SKK-JISYO.*"
+RUN sh -c "/home/rust/src/target/x86_64-unknown-linux-musl/release/yaskkserv2_make_dictionary --utf8 --dictionary-filename=dictionary.yaskkserv2 ./**/SKK-JISYO.*"
 
 FROM alpine:3.13
 
