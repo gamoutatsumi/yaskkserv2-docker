@@ -22,8 +22,6 @@ RUN --mount=type=cache,target=/usr/local/cargo/registry \
     cargo zigbuild --release --target $(cat /rust_target.txt) && \
     cp target/$(cat /rust_target.txt)/release/yaskkserv2 /usr/local/bin/yaskkserv2
 
-RUN strip /usr/local/bin/yaskkserv2
-
 ADD https://skk-dev.github.io/dict/SKK-JISYO.L.gz /tmp/
 ADD https://skk-dev.github.io/dict/SKK-JISYO.jinmei.gz /tmp/
 ADD https://skk-dev.github.io/dict/SKK-JISYO.fullname.gz /tmp/
@@ -45,6 +43,8 @@ RUN sh -c "/usr/local/bin/yaskkserv2_make_dictionary --utf8 --dictionary-filenam
 FROM gcr.io/distroless/static-debian11:nonroot
 
 COPY --from=builder /usr/local/bin/yaskkserv2 /tmp/dictionary.yaskkserv2 /tmp/edict_doc.html /
+
+RUN strip /yaskkserv2
 
 COPY ./entrypoint.sh /
 
