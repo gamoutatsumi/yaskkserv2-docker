@@ -46,7 +46,14 @@ FROM gcr.io/distroless/static-debian11:nonroot
 
 COPY --from=builder /usr/local/bin/yaskkserv2 /tmp/dictionary.yaskkserv2 /tmp/edict_doc.html /
 
-COPY ./entrypoint.sh /
+COPY --chmod=755 <<EOF /entrypoint.sh
+#!/usr/bin/env sh
+
+syslogd
+
+/yaskkserv2 --no-daemonize --midashi-utf8 /dictionary.yaskkserv2 &
+tail -f /var/log/messages
+EOF
 
 EXPOSE 1178
 
