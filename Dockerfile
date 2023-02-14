@@ -5,9 +5,10 @@ RUN apt update -y && apt install python3-pip -y && pip3 install cargo-zigbuild
 RUN git clone https://github.com/gamoutatsumi/yaskkserv2.git /app --depth 1
 WORKDIR /app
 
-RUN cargo zigbuild --release
-
-RUN mv target/$(cat /rust_target.txt)/release/yaskkserv2_make_dictionary /usr/local/bin/yaskkserv2_make_dictionary
+RUN --mount=type=cache,target=/usr/local/cargo/registry \
+    --mount=type=cache,target=/app/target \
+    cargo zigbuild --release && \
+    mv target/$(cat /rust_target.txt)/release/yaskkserv2_make_dictionary /usr/local/bin/yaskkserv2_make_dictionary
 
 ARG TARGETPLATFORM
 RUN case "$TARGETPLATFORM" in \
@@ -18,7 +19,6 @@ RUN case "$TARGETPLATFORM" in \
 RUN rustup target add $(cat /rust_target.txt)
 RUN --mount=type=cache,target=/usr/local/cargo/registry \
     --mount=type=cache,target=/app/target \
-    # cargo install が使えないので、代わりに手動でコピーする
     cargo zigbuild --release --target $(cat /rust_target.txt) && \
     cp target/$(cat /rust_target.txt)/release/yaskkserv2 /usr/local/bin/yaskkserv2
 
