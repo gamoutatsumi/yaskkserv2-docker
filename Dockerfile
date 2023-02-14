@@ -1,5 +1,7 @@
 FROM --platform=$BUILDPLATFORM rust:1.67 AS builder
 
+ENV RUSTFLAGS="-C strip=symbols"
+
 RUN apt-get update -y && apt-get install python3-pip -y && pip3 install cargo-zigbuild
 
 RUN git clone https://github.com/gamoutatsumi/yaskkserv2.git /app --depth 1
@@ -43,8 +45,6 @@ RUN sh -c "/usr/local/bin/yaskkserv2_make_dictionary --utf8 --dictionary-filenam
 FROM gcr.io/distroless/static-debian11:nonroot
 
 COPY --from=builder /usr/local/bin/yaskkserv2 /tmp/dictionary.yaskkserv2 /tmp/edict_doc.html /
-
-RUN strip /yaskkserv2
 
 COPY ./entrypoint.sh /
 
