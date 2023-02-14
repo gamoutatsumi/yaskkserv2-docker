@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM rust:1.67 AS builder
+FROM --platform=$BUILDPLATFORM rust:1.56 AS builder
 
 RUn apt update -y && apt install python3-pip -y && pip3 install cargo-zigbuild
 
