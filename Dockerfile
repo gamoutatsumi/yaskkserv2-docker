@@ -5,16 +5,10 @@ RUN apt update -y && apt install python3-pip -y && pip3 install cargo-zigbuild
 RUN git clone https://github.com/gamoutatsumi/yaskkserv2.git /app --depth 1
 WORKDIR /app
 
-ARG BUILDPLATFORM
-RUN case "$BUILDPLATFORM" in \
-  "linux/arm64") echo aarch64-unknown-linux-musl > /rust_target.txt ;; \
-  "linux/amd64") echo x86_64-unknown-linux-musl > /rust_target.txt ;; \
-  *) exit 1 ;; \
-  esac
 RUN --mount=type=cache,target=/usr/local/cargo/registry \
     --mount=type=cache,target=/app/target \
     cargo zigbuild --release && \
-    mv target/$(cat /rust_target.txt)/release/yaskkserv2_make_dictionary /usr/local/bin/yaskkserv2_make_dictionary
+    mv target/release/yaskkserv2_make_dictionary /usr/local/bin/yaskkserv2_make_dictionary
 
 ARG TARGETPLATFORM
 RUN case "$TARGETPLATFORM" in \
