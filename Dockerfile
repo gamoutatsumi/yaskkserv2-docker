@@ -2,7 +2,7 @@ FROM --platform=$BUILDPLATFORM rust:1.67 AS builder
 
 RUn apt update -y && apt install python3-pip -y && pip3 install cargo-zigbuild
 
-RUN git clone https://github.com/wachikun/yaskkserv2.git /app -b 0.1.5 --depth 1
+RUN git clone https://github.com/wachikun/yaskkserv2.git /app -b 0.1.4 --depth 1
 
 WORKDIR /app
 
