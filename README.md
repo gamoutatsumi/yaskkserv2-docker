@@ -38,5 +38,7 @@ docker run -d --init --restart=unless-stopped -p 127.0.0.1:1178:1178 --name yask
 
 `Dockerfile` と `entrypoint.sh` には [MITライセンス](./LICENSE) が適用されます。
 
+同梱されている辞書ファイルのライセンスはそれぞれの一次配布元を参照してください。
+
 [^1]: [ライセンス条項](./edict_doc.html)
 [^2]: 手元のクライアントの都合でeuc-jpモードにしているためそのままでは使えません。
