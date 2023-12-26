@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM rust:1.67 AS builder
+FROM --platform=$BUILDPLATFORM rust:1.74 AS builder
 
 ENV RUSTFLAGS="-C strip=symbols"
 
