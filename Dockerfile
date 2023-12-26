@@ -42,7 +42,7 @@ RUN sh -c "for tgz in *.tar.gz; do tar zxvf \$tgz ; done && rm *.tar.gz && gunzi
 
 RUN sh -c "/usr/local/bin/yaskkserv2_make_dictionary --utf8 --dictionary-filename=dictionary.yaskkserv2 ./**/SKK-JISYO.*"
 
-FROM alpine:3.17
+FROM alpine:3.19
 
 COPY --from=builder /usr/local/bin/yaskkserv2 /tmp/dictionary.yaskkserv2 /tmp/edict_doc.html /
 
