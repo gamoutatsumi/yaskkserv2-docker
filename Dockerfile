@@ -2,10 +2,13 @@ FROM --platform=$BUILDPLATFORM rust:1.74 AS builder
 
 ENV RUSTFLAGS="-C strip=symbols"
 
-RUN apt-get update -y && apt-get install python3-pip -y && pip3 install cargo-zigbuild
+RUN apt-get update -y && apt-get install python3-pip -y && pip3 install --break-system-packages cargo-zigbuild
 
-RUN git clone https://github.com/gamoutatsumi/yaskkserv2.git /app --depth 1
+RUN git clone https://github.com/wachikun/yaskkserv2.git /app
 WORKDIR /app
+RUN git checkout $(git describe --tags --abbrev=0)
+RUN cargo remove reqwest
+RUN cargo add reqwest --no-default-features --features rustls-tls --features blocking
 
 RUN --mount=type=cache,target=/usr/local/cargo/registry \
     --mount=type=cache,target=/app/target \
